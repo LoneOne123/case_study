@@ -11,6 +11,22 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/jobs', function () {
+    return view('jobs.index');
+})->middleware(['auth', 'verified'])->name('jobs.index');
+
+Route::get('/companies', function () {
+    return view('companies.index');
+})->middleware(['auth', 'verified'])->name('companies.index');
+
+Route::get('/categories', function () {
+    return view('categories.index');
+})->middleware(['auth', 'verified'])->name('categories.index');
+
+Route::get('/users', function () {
+    return view('users.index');
+})->middleware(['auth', 'verified'])->name('users.index');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
