@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('name');
+            $table->text('description');
+            $table->text('adress');
+            $table->string('email');
             $table->timestamps();
         });
     }
