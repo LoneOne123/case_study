@@ -19,6 +19,10 @@ Route::get('/companies', function () {
     return view('companies.index');
 })->middleware(['auth', 'verified'])->name('companies.index');
 
+Route::get('/companies/add', function () {
+    return view('companies.add');
+})->middleware(['auth', 'verified'])->name('companies.add');
+
 Route::get('/categories', function () {
     return view('categories.index');
 })->middleware(['auth', 'verified'])->name('categories.index');
