@@ -15,6 +15,10 @@ Route::get('/jobs', function () {
     return view('jobs.index');
 })->middleware(['auth', 'verified'])->name('jobs.index');
 
+Route::get('/jobs/add', function () {
+    return view('jobs.add');
+})->middleware(['auth', 'verified'])->name('jobs.add');
+
 Route::get('/companies', function () {
     return view('companies.index');
 })->middleware(['auth', 'verified'])->name('companies.index');
