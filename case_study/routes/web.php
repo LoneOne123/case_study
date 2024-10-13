@@ -23,6 +23,10 @@ Route::get('/categories', function () {
     return view('categories.index');
 })->middleware(['auth', 'verified'])->name('categories.index');
 
+Route::get('/categories/add', function () {
+    return view('categories.add');
+})->middleware(['auth', 'verified'])->name('categories.add');
+
 Route::get('/users', function () {
     return view('users.index');
 })->middleware(['auth', 'verified'])->name('users.index');
