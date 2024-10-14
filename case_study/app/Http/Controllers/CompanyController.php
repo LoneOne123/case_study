@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -13,7 +14,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+        return view('companies.index', [
+            'companies' => $companies
+        ]);
     }
 
     /**
@@ -21,7 +25,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.add');
     }
 
     /**
@@ -29,7 +33,16 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
-        //
+        $company = new Company;
+
+        $company->name = $request->name;
+        $company->description = $request->description;
+        $company->adress = $request->adress;
+        $company->email = $request->email;
+        $company->user_id = Auth::user()->id;
+        
+        $company->save();
+        return redirect()->route('companies.index');
     }
 
     /**
@@ -37,7 +50,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        return view('companies.detail', ['company' => $company]);
     }
 
     /**
@@ -45,7 +58,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('companies.edit', ['company' => $company]);
     }
 
     /**
@@ -53,7 +66,13 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
-        //
+        $company->name = $request->name;
+        $company->description = $request->description;
+        $company->adress = $request->adress;
+        $company->email = $request->email;
+        $company->save();
+        
+        return redirect()->route('companies.detail', $company);
     }
 
     /**
@@ -61,6 +80,8 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+
+        return redirect()->route('companies.index');
     }
 }
