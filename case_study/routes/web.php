@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [JobController::class, 'index'])
@@ -100,9 +101,19 @@ Route::controller(JobController::class)
 
 });
 
-Route::get('/users', function () {
-    return view('users.index');
-})->middleware(['auth', 'verified'])->name('users.index');
+Route::controller(UserController::class)
+    ->prefix('users')
+    ->middleware(['auth', 'verified'])
+    ->name('users.')
+    ->group(function () {
+
+    Route::get('/', 'index')
+        ->name('index');
+
+    Route::get('/{user}', 'show')
+        ->name('detail');
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
