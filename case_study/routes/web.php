@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,14 +13,6 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/jobs', function () {
-    return view('jobs.index');
-})->middleware(['auth', 'verified'])->name('jobs.index');
-
-Route::get('/jobs/add', function () {
-    return view('jobs.add');
-})->middleware(['auth', 'verified'])->name('jobs.add');
 
 Route::controller(CompanyController::class)
     ->prefix('companies')
@@ -75,6 +68,35 @@ Route::controller(CategoryController::class)
         ->name('update');
 
     Route::delete('/{category}', 'destroy')
+        ->name('delete');
+
+});
+
+Route::controller(JobController::class)
+    ->prefix('jobs')
+    ->middleware(['auth', 'verified'])
+    ->name('jobs.')
+    ->group(function () {
+
+    Route::get('/', 'index')
+        ->name('index');
+
+    Route::get('/add', 'create')
+        ->name('add');
+
+    Route::post('/store', 'store')
+        ->name('store');
+
+    Route::get('/{job}', 'show')
+        ->name('detail');
+
+    Route::get('/{job}/edit', 'edit')
+        ->name('edit');
+
+    Route::patch('/{job}', 'update')
+        ->name('update');
+
+    Route::delete('/{job}', 'destroy')
         ->name('delete');
 
 });
