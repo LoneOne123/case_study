@@ -19,16 +19,18 @@
             <p class="font-medium mt-5">Adress</p>
             <p class="whitespace-pre-wrap">{{ $job->adress }}</p>
             <p class="text-right mt-5">created at {{ $job->created_at }} by {{ $job->user_prename }} {{ $job->user_name }}</p>
-            @if ($job->user_id == auth()->user()->id)
-            <div class="flex w-full justify-center">
-                <a class="p-5 rounded-lg mr-5" style="background-color: blue;" href="{{ route('jobs.edit', $job->id) }}">Edit</a>
-                <form method="POST" action="{{ route('jobs.delete', $job->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button class="p-5 rounded-lg" style="background-color: red;">delete</button>
-                </form>
-            </div>
-            @endif
+            @auth
+                @if ($job->user_id == auth()->user()->id)
+                    <div class="flex w-full justify-center">
+                        <a class="p-5 rounded-lg mr-5" style="background-color: blue;" href="{{ route('jobs.edit', $job->id) }}">Edit</a>
+                        <form method="POST" action="{{ route('jobs.delete', $job->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="p-5 rounded-lg" style="background-color: red;">delete</button>
+                        </form>
+                    </div>
+                @endif
+            @endauth
         </div>
     </div>
 </x-app-layout>

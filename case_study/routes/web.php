@@ -6,9 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [JobController::class, 'index'])
+    ->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -72,23 +71,23 @@ Route::controller(CategoryController::class)
 
 });
 
+Route::get('/jobs', [JobController::class, 'index'])
+    ->name('jobs.index');
+
+Route::get('/jobs/{job}', [JobController::class, 'show'])
+    ->name('jobs.detail');
+
 Route::controller(JobController::class)
     ->prefix('jobs')
     ->middleware(['auth', 'verified'])
     ->name('jobs.')
     ->group(function () {
 
-    Route::get('/', 'index')
-        ->name('index');
-
     Route::get('/add', 'create')
         ->name('add');
 
     Route::post('/store', 'store')
         ->name('store');
-
-    Route::get('/{job}', 'show')
-        ->name('detail');
 
     Route::get('/{job}/edit', 'edit')
         ->name('edit');
