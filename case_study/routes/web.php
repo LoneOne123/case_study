@@ -20,28 +20,34 @@ Route::get('/jobs/add', function () {
     return view('jobs.add');
 })->middleware(['auth', 'verified'])->name('jobs.add');
 
-Route::get('/companies', [CompanyController::class, 'index'])
+Route::controller(CompanyController::class)
+    ->prefix('companies')
     ->middleware(['auth', 'verified'])
-    ->name('companies.index');
+    ->name('companies.')
+    ->group(function () {
 
-Route::get('/companies/add', [CompanyController::class, 'create'])
-    ->middleware(['auth', 'verified'])
-    ->name('companies.add');
+    Route::get('/', 'index')
+        ->name('index');
 
-Route::post('/companies/store', [CompanyController::class, 'store'])
-    ->name('companies.store');
+    Route::get('/add', 'create')
+        ->name('add');
 
-Route::get('/companies/{company}', [CompanyController::class, 'show'])
-    ->name('companies.detail');
+    Route::post('/store', 'store')
+        ->name('store');
 
-Route::get('/companies/{company}/edit', [CompanyController::class, 'edit'])
-    ->name('companies.edit');
+    Route::get('/{company}', 'show')
+        ->name('detail');
 
-Route::patch('/companies/{company}', [CompanyController::class, 'update'])
-    ->name('companies.update');
+    Route::get('/{company}/edit', 'edit')
+        ->name('edit');
 
-Route::delete('/companies/{company}', [CompanyController::class, 'destroy'])
-    ->name('companies.delete');
+    Route::patch('/{company}', 'update')
+        ->name('update');
+
+    Route::delete('/{company}', 'destroy')
+        ->name('delete');
+
+});
 
 Route::get('/categories', function () {
     return view('categories.index');
