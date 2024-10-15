@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -49,13 +50,34 @@ Route::controller(CompanyController::class)
 
 });
 
-Route::get('/categories', function () {
-    return view('categories.index');
-})->middleware(['auth', 'verified'])->name('categories.index');
+Route::controller(CategoryController::class)
+    ->prefix('categories')
+    ->middleware(['auth', 'verified'])
+    ->name('categories.')
+    ->group(function () {
 
-Route::get('/categories/add', function () {
-    return view('categories.add');
-})->middleware(['auth', 'verified'])->name('categories.add');
+    Route::get('/', 'index')
+        ->name('index');
+
+    Route::get('/add', 'create')
+        ->name('add');
+
+    Route::post('/store', 'store')
+        ->name('store');
+
+    Route::get('/{category}', 'show')
+        ->name('detail');
+
+    Route::get('/{category}/edit', 'edit')
+        ->name('edit');
+
+    Route::patch('/{category}', 'update')
+        ->name('update');
+
+    Route::delete('/{category}', 'destroy')
+        ->name('delete');
+
+});
 
 Route::get('/users', function () {
     return view('users.index');
