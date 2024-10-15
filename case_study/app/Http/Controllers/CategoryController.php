@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Company::all();
+        $categories = Category::all();
         return view('categories.index', [
             'categories' => $categories
         ]);
