@@ -26,7 +26,7 @@ class UpdateJobRequest extends FormRequest
             'category_id' => 'required',
             'title' => 'required|min:10|max:100',
             'description' => 'required|min:10|max:1000',
-            'salary' => 'required|decimal:2'
+            'salary' => 'required|numeric|decimal:2'
         ];
     }
 }
