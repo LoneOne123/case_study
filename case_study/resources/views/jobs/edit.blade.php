@@ -14,7 +14,7 @@
                 <x-jobs.form :job="$job" :companies="$companies" :categories="$categories"/>
 
                 <div class="text-right mt-5">
-                    <button class="py-2 px-4 rounded-lg" style="background-color: green;">Add</button>
+                    <button class="py-2 px-4 rounded-lg" style="background-color: green; color: white;">Save</button>
                 </div>
             </form>
         </div>

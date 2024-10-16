@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-10 text-right">
-        <a href="{{ route('jobs.add') }}" class="py-2 px-4 rounded-lg cursor-pointer" style="background-color: green;">Add Job</a>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-5 text-right">
+        <a href="{{ route('jobs.add') }}" class="py-2 px-4 rounded-lg cursor-pointer" style="background-color: green; color: white;">Add Job</a>
     </div>
 
-    <div class="mt-10 pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="mt-5 pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
         @foreach ($jobs as $job)
             <div class="mt-5 p-5 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <a class="font-semibold" href="{{ route('jobs.detail', $job->id) }}">{{ $job->title }}</a>
@@ -28,11 +28,11 @@
                 @auth
                     @if ($job->user_id == auth()->user()->id)
                     <div class="flex w-full justify-center">
-                        <a class="py-2 px-4 rounded-lg mr-5" style="background-color: blue;" href="{{ route('jobs.edit', $job->id) }}">Edit</a>
+                        <a class="py-2 px-4 rounded-lg mr-5" style="background-color: blue; color: white;" href="{{ route('jobs.edit', $job->id) }}">Edit</a>
                         <form method="POST" action="{{ route('jobs.delete', $job->id) }}">
                             @csrf
                             @method('DELETE')
-                            <button class="py-2 px-4 rounded-lg" style="background-color: red;">delete</button>
+                            <button class="py-2 px-4 rounded-lg" style="background-color: red; color: white;">delete</button>
                         </form>
                     </div>
                     @endif

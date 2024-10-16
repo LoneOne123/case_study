@@ -22,12 +22,7 @@
             @auth
                 @if ($job->user_id == auth()->user()->id)
                     <div class="flex w-full justify-center">
-                        <a class="py-2 px-4 rounded-lg mr-5" style="background-color: blue;" href="{{ route('jobs.edit', $job->id) }}">Edit</a>
-                        <form method="POST" action="{{ route('jobs.delete', $job->id) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button class="py-2 px-4 rounded-lg" style="background-color: red;">delete</button>
-                        </form>
+                        <a class="py-2 px-4 rounded-lg" style="background-color: blue; color: white;" href="{{ route('jobs.edit', $job->id) }}">Edit</a>
                     </div>
                 @endif
             @endauth

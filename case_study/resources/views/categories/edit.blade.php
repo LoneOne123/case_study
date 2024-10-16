@@ -12,7 +12,7 @@
                 <x-categories.form :category="$category"/>
 
                 <div class="text-right mt-5">
-                    <button class="p-5 rounded-lg" style="background-color: green;">Save</button>
+                    <button class="py-2 px-4 rounded-lg" style="background-color: green; color: white;">Save</button>
                 </div>
             </form>
         </div>
