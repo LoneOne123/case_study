@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -80,6 +81,10 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
+        DB::table('jobs')
+            ->where('company_id', '=', $company->id)
+            ->delete();
+        
         $company->delete();
 
         return redirect()->route('companies.index');

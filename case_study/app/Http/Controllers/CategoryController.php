@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -74,6 +75,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        DB::table('jobs')
+            ->where('category_id', '=', $category->id)
+            ->delete();
+        
         $category->delete();
 
         return redirect()->route('categories.index');
