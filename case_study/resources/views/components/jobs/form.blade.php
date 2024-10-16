@@ -29,7 +29,7 @@
 <div class="mt-5">
     <x-input-label for="category" value="Category" />
     <select id="category" name="category" class="w-full rounded-lg">
-        <option value="{{ $job->category_id ?? ''}}">{{ $job->name ?? 'Select category'}}</option>
+        <option value="{{ $job->category_id ?? ''}}">{{ $job->category_name ?? 'Select category'}}</option>
         @foreach ($categories as $category)
             <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach

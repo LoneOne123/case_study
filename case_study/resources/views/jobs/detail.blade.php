@@ -7,8 +7,8 @@
     <div class="mt-10 pb-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-5 p-5 bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <p class="font-semibold">{{ $job->title }}</p>
-            <p class="">{{ $job->name }}</p>
-            <p class="font-medium mt-5">Company</p>
+            <p class="">{{ $job->category_name }}</p>
+            <p class="font-medium mt-5">{{ $job->company_name }}</p>
             <p class="whitespace-pre-wrap">{{ $job->company_description }}</p>
             <p class="font-medium mt-5">Job</p>
             <p class="whitespace-pre-wrap">{{ $job->job_description }}</p>

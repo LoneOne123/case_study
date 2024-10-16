@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-5 text-right">
-        <a href="{{ route('companies.add') }}" class="py-2 px-4 rounded-lg cursor-pointer" style="background-color: green; color: white;">Add companie</a>
+        <a href="{{ route('companies.add') }}" class="py-2 px-4 rounded-lg cursor-pointer" style="background-color: green; color: white;">Add company</a>
     </div>
 
     <div class="mt-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -15,7 +15,7 @@
                 <a class="font-semibold" href="{{ route('companies.detail', $company->id) }}">{{ $company->name }}</a>
                 <p class="whitespace-pre-wrap mt-5">{{ $company->description }}</p>
                 <p class="mt-5">{{ $company->email }}</p>
-                <p class="mt-5">{{ $company->adress }}</p>
+                <p class="whitespace-pre-wrap mt-5">{{ $company->adress }}</p>
                 @if ($company->user_id == auth()->user()->id)
                 <div class="flex w-full justify-center">
                     <a class="py-2 px-4 rounded-lg mr-5" style="background-color: blue; color: white;" href="{{ route('companies.edit', $company) }}">Edit</a>
