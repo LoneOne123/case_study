@@ -57,7 +57,7 @@ class JobController extends Controller
 
         return view('jobs.add', [
             'companies' => $companies,
-            'categories' => $categories
+            'categories' => $categories    
         ]);
     }
 

@@ -72,12 +72,6 @@ Route::controller(CategoryController::class)
 
 });
 
-Route::get('/jobs', [JobController::class, 'index'])
-    ->name('jobs.index');
-
-Route::get('/jobs/{job}', [JobController::class, 'show'])
-    ->name('jobs.detail');
-
 Route::controller(JobController::class)
     ->prefix('jobs')
     ->middleware(['auth', 'verified'])
@@ -100,6 +94,12 @@ Route::controller(JobController::class)
         ->name('delete');
 
 });
+
+Route::get('/jobs', [JobController::class, 'index'])
+    ->name('jobs.index');
+
+Route::get('/jobs/{job}', [JobController::class, 'show'])
+    ->name('jobs.detail');
 
 Route::controller(UserController::class)
     ->prefix('users')
