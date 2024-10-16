@@ -28,14 +28,14 @@ class JobController extends Controller
                     'jobs.description as job_description',
                     'jobs.created_at',
                     'jobs.salary', 
-                    'companies.name', 
+                    'companies.name as company_name', 
                     'companies.email', 
                     'companies.adress', 
                     'companies.description as company_description', 
                     'categories.name', 
                     'users.prename as user_prename', 
                     'users.name as user_name')
-            ->get();
+            ->paginate(5);
 
         return view('jobs.index', [
             'jobs' => $jobs

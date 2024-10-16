@@ -18,5 +18,8 @@
                 @endif
             </div>
         @endforeach
+        <div class="py-5">
+            {{ $users->links() }}
+        </div>
     </div>
 </x-app-layout>

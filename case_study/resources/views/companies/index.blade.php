@@ -28,5 +28,8 @@
                 @endif
             </div>
         @endforeach
+        <div class="py-5">
+            {{ $companies->links() }}
+        </div>
     </div>
 </x-app-layout>

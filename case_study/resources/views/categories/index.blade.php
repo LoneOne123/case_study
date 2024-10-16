@@ -25,5 +25,8 @@
                 @endif
             </div>
         @endforeach
+        <div class="py-5">
+            {{ $categories->links() }}
+        </div>
     </div>
 </x-app-layout>

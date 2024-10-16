@@ -14,7 +14,7 @@
             <div class="mt-5 p-5 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <a class="font-semibold" href="{{ route('jobs.detail', $job->id) }}">{{ $job->title }}</a>
                 <p class="">{{ $job->name }}</p>
-                <p class="font-medium mt-5">Company</p>
+                <p class="font-medium mt-5">{{ $job->company_name }}</p>
                 <p class="whitespace-pre-wrap">{{ $job->company_description }}</p>
                 <p class="font-medium mt-5">Job</p>
                 <p class="whitespace-pre-wrap">{{ $job->job_description }}</p>
@@ -39,5 +39,8 @@
                 @endauth
             </div>
         @endforeach
+        <div class="py-5">
+            {{ $jobs->links() }}
+        </div>
     </div>
 </x-app-layout>
