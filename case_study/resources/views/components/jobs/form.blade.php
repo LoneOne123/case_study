@@ -22,7 +22,7 @@
             <option value="{{ $company->id }}">{{ $company->name}}</option>
         @endforeach
     </select>
-    <x-input-error :messages="$errors->get('company_id')" class="mt-2" />
+    <x-input-error :messages="$errors->get('company')" class="mt-2" />
 </div>
 
 <!-- Category -->
@@ -34,7 +34,7 @@
             <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
     </select>
-    <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
+    <x-input-error :messages="$errors->get('category')" class="mt-2" />
 </div>
 
 <!-- Salary -->
